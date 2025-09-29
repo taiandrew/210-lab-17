@@ -1,14 +1,20 @@
+// COMSC 210 | Lab 17 | Sept 29 2025
+// IDE used: VS Code
+
 #include <iostream>
 using namespace std;
 
 const int SIZE = 7;  
 
+// Linked list node struct
 struct Node {
     float value;
     Node *next;
 };
 
+// Fn prototypes
 void output(Node *);
+void insertHead(Node *&, float);
 
 int main() {
     Node *head = nullptr;
@@ -97,6 +103,26 @@ int main() {
     output(head);
 
     return 0;
+}
+
+
+// Programmer fns
+
+void insertHead(Node *& head, float val) {
+    // adds node at head
+    // args: reference to head pointer, value to insert
+
+    Node *newVal = new Node;
+    if (!head) { // if this is the first node, it's the new head
+        head = newVal;
+        newVal->next = nullptr;
+        newVal->value = val;
+    }
+    else { // its a second or subsequent node; place at the head
+        newVal->next = head;
+        newVal->value = val;
+        head = newVal;
+    }
 }
 
 void output(Node * hd) {
