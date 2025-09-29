@@ -122,7 +122,7 @@ void insertNode(Node *& head, int entry, float val) {
         }
     //at this point, insert a node between prev and current
     Node *newnode = new Node;
-    newnode->value = 10000;
+    newnode->value = val;
     newnode->next = current;
     prev->next = newnode;
     output(head);
