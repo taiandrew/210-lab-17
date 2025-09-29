@@ -17,6 +17,7 @@ void output(Node *);
 void insertHead(Node *&, float);
 void deleteIthNode(Node *&, int);
 void insertNode(Node *&, int, float);
+void deleteList(Node *&);
 
 
 int main() {
@@ -31,7 +32,7 @@ int main() {
     output(head);
 
     // deleting a node
-    Node * current = head;
+    Node *current = head;
     cout << "Which node to delete? " << endl;
     output(head);
     int entry;
@@ -56,13 +57,7 @@ int main() {
 
 
     // deleting the linked list
-    current = head;
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-    head = nullptr;
+    deleteList(head);
     output(head);
 
     return 0;
@@ -126,11 +121,24 @@ void insertNode(Node *& head, int entry, float val) {
             prev = prev->next;
         }
     //at this point, insert a node between prev and current
-    Node * newnode = new Node;
+    Node *newnode = new Node;
     newnode->value = 10000;
     newnode->next = current;
     prev->next = newnode;
     output(head);
+}
+
+void deleteList(Node *& head) {
+    // deletes the entire linked list
+    // args: reference to head pointer
+
+    Node *current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
 }
 
 void output(Node * hd) {
