@@ -16,6 +16,8 @@ struct Node {
 void output(Node *);
 void insertHead(Node *&, float);
 void deleteIthNode(Node *&, int);
+void insertNode(Node *&, int, float);
+
 
 int main() {
     Node *head = nullptr;
@@ -50,21 +52,8 @@ int main() {
     cout << "Choice --> ";
     cin >> entry;
 
-    current = head;
-    prev = head;
-    for (int i = 0; i < (entry); i++)
-        if (i == 0)
-            current = current->next;
-        else {
-            current = current->next;
-            prev = prev->next;
-        }
-    //at this point, insert a node between prev and current
-    Node * newnode = new Node;
-    newnode->value = 10000;
-    newnode->next = current;
-    prev->next = newnode;
-    output(head);
+    insertNode(head, entry, 10000);
+
 
     // deleting the linked list
     current = head;
@@ -120,6 +109,28 @@ void deleteIthNode(Node *& head, int entry) {
         current = nullptr;
     }
 
+}
+
+void insertNode(Node *& head, int entry, float val) {
+    // inserts a node with val after the ith node
+    // args: reference to head pointer, index of node to insert after, value to insert
+
+    // Traverse to index
+    Node *current = head;
+    Node *prev = head;
+    for (int i = 0; i < (entry); i++)
+        if (i == 0)
+            current = current->next;
+        else {
+            current = current->next;
+            prev = prev->next;
+        }
+    //at this point, insert a node between prev and current
+    Node * newnode = new Node;
+    newnode->value = 10000;
+    newnode->next = current;
+    prev->next = newnode;
+    output(head);
 }
 
 void output(Node * hd) {
