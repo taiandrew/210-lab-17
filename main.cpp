@@ -87,6 +87,15 @@ void deleteIthNode(Node *& head, int entry) {
     // deletes the ith node in the linked list
     // args: reference to head pointer, index of node to delete
 
+    // If entry is 1, delete head
+    if (entry == 1) {
+        Node *tmp = head;
+        head = head->next;
+        delete tmp;
+        tmp = nullptr;
+        return;
+    }
+
     // traverse that many times and delete that node
     Node *current = head;
     Node *prev = head;
