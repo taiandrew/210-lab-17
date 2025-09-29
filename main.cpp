@@ -12,14 +12,18 @@ struct Node {
     Node *next;
 };
 
+// ------
 // Fn prototypes
+// ------
 void output(Node *);
 void insertHead(Node *&, float);
 void deleteIthNode(Node *&, int);
 void insertNode(Node *&, int, float);
 void deleteList(Node *&);
 
-
+// ------
+// Main
+// ------
 int main() {
     Node *head = nullptr;
     int count = 0;
@@ -63,8 +67,9 @@ int main() {
     return 0;
 }
 
-
+// ------
 // Programmer fns
+// ------
 
 void insertHead(Node *& head, float val) {
     // adds node at head
@@ -112,7 +117,6 @@ void deleteIthNode(Node *& head, int entry) {
         delete current;
         current = nullptr;
     }
-
 }
 
 void insertNode(Node *& head, int entry, float val) {
